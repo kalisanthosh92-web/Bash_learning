@@ -1,17 +1,28 @@
 import os,sys
 
+
 def note_checker(fname):
-    if os.path.isfile(fname): 
+    if os.path.exists(fname):
+        f = open(fname, "r")
         print(f'{fname} exists.')
-        global file_note
-        file_note = open(fname, 'r') 
-        notes = file_note.read().splitlines()
-        file_note.close()
-        return True
+        f.close()
+        
     else:
-        print(fname+' does not exist')
-        sys.exit()
-        return False
+        print("No students yet — file will be created on first add.")
+        f = open(fname, "w")
+        f.close()
+        
+def clear_screen():
+    if os.name == "nt":    
+        os.system("cls")
+    else:                  
+        os.system("clear")
+
+fname = input('Enter filename: ')
+note_checker(fname)
+
+
+print('Opening file... ')
 
 
 
@@ -33,8 +44,7 @@ def all_notes():
     file_note.close()
 
 
-fname = input('Enter filename: ')
-note_checker(fname)
+
 
 
 print(f'{' Note Taking App ':=^50}')
@@ -49,12 +59,10 @@ list_process = [
 
 
 
-file_note = open(fname, 'r') 
-notes = file_note.read().splitlines()
-file_note.close()
-
-
-while note_checker :
+while True:
+    file_note = open(fname, 'r') 
+    notes = file_note.read().splitlines()
+    file_note.close()
     print()
     for i in range(len(list_process)):
         
@@ -74,6 +82,8 @@ while note_checker :
 
     
     if choice == 1:
+        clear_screen()
+
         new_header = input("Enter your note's title.").title()
         new_notes = input("Enter your notes: ").capitalize()
         notes.append(f'{new_header} - {new_notes}')
@@ -84,7 +94,10 @@ while note_checker :
 
 
     elif choice ==2:
+        clear_screen()
+
         all_notes()
+        
         
         while True:
             selected_note = input("Select notes number: ")
@@ -137,6 +150,8 @@ while note_checker :
 
 
     elif choice == 3:
+        clear_screen()
+
         all_notes()
         while True:
             user_input = input("Select notes number: ")
@@ -160,10 +175,14 @@ while note_checker :
 
         
     elif choice == 4:
+        clear_screen()
+
         all_notes()
         print()
 
     elif choice == 5:
+        clear_screen()
+
         print("Quitting the app.")
         break
 
