@@ -1,2 +1,3 @@
-this a text file for testing the bash.
-
+Hi - Hello
+Welcome - Hello
+Name  - Kumar
