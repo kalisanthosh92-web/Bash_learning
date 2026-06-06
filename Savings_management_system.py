@@ -45,6 +45,7 @@ def create_acc(name):
     rand_num = rd.choices(range(1,100),k = 4)
     num = ''.join(str(i) for i in rand_num) 
     unique_num = int(num)
+    unique_acc = name + '_' + str(unique_num)
     file_name = name +  '_' + str(unique_num) + '.txt'
     with open(file_name, 'w') as file:
         print('account created')
@@ -66,7 +67,7 @@ while True:
                 name = fname + '_' + lname
                 if file_check(name) == False :
                     create_acc(name)
-                    
+                    print(f'your acc num is {unique_acc} ')
 
 
             elif choice == 2:
@@ -108,15 +109,27 @@ while True:
                     if file_check(input_name) == True:
                         file = open(input_name + '.txt', 'r+')
                         file_content = file.read().splitlines()
-                        dep_amount = int(input('Enter amount to deposit: '))
-                        update = f'deposited ${dep_amount}.'
-                        file_content.append(update)                                
-                        file.write(file_content)
-                        file.flush()
-                        file.close()
+                        while True:
+                            dep_amount = input('Enter amount to deposit: ')
+                            if  dep_amount.isdigit() and 0 < int(dep_amount) :
+                                
+                                update = f'deposited ${dep_amount}.'
+                                file_content.append(update) 
+                                for line in file_content:
+                                    if line.startswith('Balance :'):
+                                        balance = line.split(':')[1].strip()
+                                        balance += dep_amount
+                                        balance_str = line.pop()
+                                file_content.append(balance_str)
+                                file.write(file_content)
+                                file.flush()
+                                file.close()
+                                break
                     else:
                         print('invalid file name.')
                 elif exiting_option == 'N':        
                     print('Exiting. ')
                 else:
                     print('Invalid input. ')
+
+            
