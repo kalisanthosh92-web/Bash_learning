@@ -30,30 +30,34 @@ def bill():
         except :
             print('Please input a valid input. ')
 
-    total_amount = number_of_meals * price_of_each_meal
+    total_amount = round((number_of_meals * price_of_each_meal),2)
 
     clear_screen()
-    print()
 
 
-    print('RECIEPT'.center(30,'*'))
-    print('\n')
+
+    print('RECIEPT'.center(30,'-'))
     print('Name of the Customer:'.ljust(25),name_of_customer)
     print('Number of meals ordered:'.ljust(25),number_of_meals)
-    print('Price of each meal:'.ljust(25),price_of_each_meal)
+    print('Price of each meal:'.ljust(25),round(price_of_each_meal,2))
 
     print('total amount:'.ljust(25),total_amount)
-
+    
 
     if total_amount >= 500 :
-        Discount = total_amount * 0.1
+        Discount = round((total_amount * 0.10),2)
         print('Discount'.ljust(25),Discount)
         
         final_amount = total_amount - Discount
-        print('Final Amount:'.ljust(25),final_amount)
+        
     else :
-        final_amount = total_amount
+        Discount = 0
+        print('Discount'.ljust(25),Discount)
+        final_amount = total_amount - Discount
 
+    print('-' * (25 + len(str(total_amount))))
+
+    print('Final amount:'.ljust(25),final_amount)
     print()
 
     if number_of_meals >= 5 and final_amount >=400 :
@@ -65,7 +69,6 @@ def bill():
     print('Thank You for dinning here.')
     print('Please visit again.')
 
-    print()
     print()
 
 
