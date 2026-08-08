@@ -45,7 +45,7 @@ def create_acc(name):
     rand_num = rd.choices(range(1,100),k = 4)
     num = ''.join(str(i) for i in rand_num) 
     unique_num = int(num)
-    unique_acc = name + '_' + str(unique_num)
+    uniqueAccount_num = = name + '_' + str(unique_num)
     file_name = name +  '_' + str(unique_num) + '.txt'
     with open(file_name, 'w') as file:
         print('account created')
