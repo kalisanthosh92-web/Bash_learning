@@ -55,7 +55,7 @@ def bill():
         print('Discount'.ljust(25),Discount)
         final_amount = total_amount - Discount
 
-    print('-' * (25 + len(str(total_amount))))
+    print('-' * (26 + len(str(total_amount))))
 
     print('Final amount:'.ljust(25),final_amount)
     print()
