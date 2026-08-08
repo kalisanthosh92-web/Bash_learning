@@ -75,7 +75,7 @@ def bill():
 
 while True:
     new_customer = input('Do you have a new customer?(Y/N) ').upper()
-    if new_customer == 'Y':
+    if new_customer != 'N':
         clear_screen()
         bill()
     else :
