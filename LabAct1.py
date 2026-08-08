@@ -1,4 +1,10 @@
 import os
+def clear_screen():
+    if os.name == "nt":    
+        os.system("cls")
+    else:                  
+        os.system("clear")
+
 
 def bill():
     while True:
@@ -26,7 +32,7 @@ def bill():
 
     total_amount = number_of_meals * price_of_each_meal
 
-    os.system('clear')
+    clear_screen()
     print()
     print()
 
@@ -68,6 +74,7 @@ def bill():
 while True:
     new_customer = input('Do you have a new customer?(Y/N) ').upper()
     if new_customer == 'Y':
+        clear_screen()
         bill()
     else :
         print('Thank you for using.' )
