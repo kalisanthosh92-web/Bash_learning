@@ -34,7 +34,6 @@ def bill():
 
     clear_screen()
     print()
-    print()
 
 
     print('RECIEPT'.center(30,'*'))
